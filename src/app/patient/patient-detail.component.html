@@ -1,0 +1,40 @@
+<section>
+  <div>
+    <h2 *ngIf="new">
+      Nuevo paciente
+    </h2>
+    <h2 *ngIf="!new && comprobante !== undefined">
+      Editar paciente: {{paciente.id}}
+    </h2>
+  </div>
+</section>
+
+<section class="md-content">
+
+    <form [formGroup]="form" novalidate>
+
+        <mat-form-field>
+          <input matInput
+          formControlName="name"
+          placeholder="Nombre"
+          required>
+          <mat-error *ngIf="name.invalid">
+            Nombre <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          matTooltip="Guardar"
+          color="primary"
+          type="submit"
+          (click)="save()"
+          [disabled]="form.invalid">
+          Guardar
+        </button>
+
+    </form>
+
+
+
+</section>

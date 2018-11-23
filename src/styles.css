@@ -1,1 +1,6 @@
 @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-table {
+  width: 100%;
+  background-color: grey;
+}

@@ -11,9 +11,14 @@ import { AuthService } from './_services/index';
 import { AuthGuard } from './_services/index';
 import { AuthInterceptor } from './_services/index';
 
+import { PatientService } from './_services/index';
+
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/index';
 import { LogoutComponent } from './login/index';
+
+import { PatientComponent } from './patient/index';
+import { PatientDetailComponent } from './patient/index';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
@@ -41,7 +46,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
   declarations: [
     AppComponent,
     LoginComponent,
-    LogoutComponent
+    LogoutComponent,
+
+    PatientComponent,
+    PatientDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -79,7 +87,9 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
-    }
+    },
+
+    PatientService
   ],
   bootstrap: [AppComponent]
 })

@@ -71,9 +71,8 @@ export class AuthService {
     .pipe(
         tap((data: any) => {
           console.log(`${this.constructor.name}: post ${url}`);
-
-          if (data && data.key) {console.log('dsdad');
-            localStorage.setItem('token', data.key);
+          if (data && data.token) {
+            localStorage.setItem('token', data.token);
             this.logged = true;
             this._router.navigate([this.redirectUrl]);
           }
@@ -86,7 +85,7 @@ export class AuthService {
     logout() {
       const url = this.LOGOUT_URL;
 
-      const headers = new HttpHeaders({ 'Authorization': 'Token ' + this.token });
+      const headers = new HttpHeaders({ 'Authorization': 'JWT ' + this.token });
       localStorage.removeItem('token');
       this.token = undefined;
       this._http.get(url, { headers })
@@ -98,27 +97,6 @@ export class AuthService {
            }
         );
     }
-
-
-    checkToken(): Observable<User> {
-      const url = this.USER_URL;
-
-      if (this.token === null) {
-        console.log(`${this.constructor.name}: Token ${this.token}`);
-        return of(null);
-      }
-
-      const headers = new HttpHeaders({ 'Authorization': 'Token ' + this.token });
-      return this._http.get<User>(url, { headers })
-      .pipe(
-        tap(_ => {
-          this.user = _;
-          console.log(`${this.constructor.name}: get ${url}`);
-      }),
-        catchError(handleError<User>(`${this.constructor.name}: get ${url}`))
-      );
-    }
-
 
     getUser() {
       return this.user;
