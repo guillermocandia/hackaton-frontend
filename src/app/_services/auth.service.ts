@@ -6,7 +6,7 @@ import { HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs/';
 import { BehaviorSubject } from 'rxjs/';
-import { map, tap, catchError } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 
 import { UserLogin } from '../_model/index';
 import { User } from '../_model/index';
@@ -16,7 +16,7 @@ import { handleError } from './handleError';
 export class AuthService {
   URL = API_URL;
 
-  LOGIN_URL = `${this.URL}rest-auth/login/`;
+  LOGIN_URL = `${this.URL}api/users/auth/sign_in/`;
   LOGOUT_URL = `${this.URL}rest-auth/logout/`;
   USER_URL = `${this.URL}rest-auth/user/`;
 
@@ -69,15 +69,14 @@ export class AuthService {
 
     return this._http.post<any>(url, body)
     .pipe(
-        map((data) => {
-          if (data && data.key) {
+        tap((data: any) => {
+          console.log(`${this.constructor.name}: post ${url}`);
+
+          if (data && data.key) {console.log('dsdad');
             localStorage.setItem('token', data.key);
             this.logged = true;
             this._router.navigate([this.redirectUrl]);
           }
-        }),
-        tap(_ => {
-          console.log(`${this.constructor.name}: post ${url}`);
         }),
         catchError(handleError<string>(`${this.constructor.name}: post ${url}`))
       );

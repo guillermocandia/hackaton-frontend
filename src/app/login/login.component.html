@@ -1,0 +1,42 @@
+<mat-card class="md-login" >
+  <mat-card-title>
+    ¡Buen día!
+  </mat-card-title>
+  <mat-card-subtitle>
+    Ingresa a Hackaton
+  </mat-card-subtitle>
+
+  <mat-card-content>
+    <form [formGroup]="loginForm" novalidate>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Nombre de usuario</mat-label>
+      <input matInput type="text" placeholder="Nombre de usuario" formControlName="username" required>
+
+      <mat-error *ngIf="username.invalid">
+      Usuario <strong>obligatorio</strong>
+    </mat-error>
+
+  </mat-form-field>
+
+<br>
+
+
+<mat-form-field appearance="outline">
+  <mat-label>Contraseña</mat-label>
+  <input matInput type="password" placeholder="Ingresa tu contraseña" formControlName="password" required>
+   <mat-error *ngIf="password.invalid && (password.dirty || password.touched)">
+  Contraseña <strong>obligatoria</strong>
+</mat-error>
+</mat-form-field>
+<br>
+<button mat-raised-button color="primary" class="btn btn-action-md" type="submit" (click)="login()">Ingresar</button>
+
+
+
+</form>
+</mat-card-content>
+
+
+
+</mat-card>
