@@ -1,0 +1,68 @@
+<section>
+  <div>
+    <h2 *ngIf="new">
+      Nueva ficha
+    </h2>
+    <h2 *ngIf="!new && medicalRecord !== undefined">
+      Editar ficha
+    </h2>
+  </div>
+</section>
+
+<section class="md-content">
+
+    <form [formGroup]="form" novalidate>
+
+        <mat-form-field>
+          <input matInput
+          formControlName="patient"
+          placeholder="PAciente"
+          required>
+          <mat-error *ngIf="patient.invalid">
+            Nombre <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput
+          formControlName="categorization"
+          placeholder="Cat"
+          required>
+          <mat-error *ngIf="categorization.invalid">
+            Nombre <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput
+          formControlName="state"
+          placeholder="Estado"
+          required>
+          <mat-error *ngIf="state.invalid">
+            Nombre <strong>obligatorio</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <input matInput
+          formControlName="comment"
+          placeholder="Comentario"
+          >
+
+        </mat-form-field>
+
+
+
+        <button
+          mat-raised-button
+          matTooltip="Guardar"
+          color="primary"
+          type="submit"
+          (click)="save()"
+          [disabled]="form.invalid">
+          Guardar
+        </button>
+
+    </form>
+
+</section>

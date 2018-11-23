@@ -9,6 +9,8 @@ import { LogoutComponent } from './login/index';
 import { PatientComponent } from './patient/index';
 import { PatientDetailComponent } from './patient/index';
 
+import { MedicalRecordDetailComponent } from './medical-record/index';
+
 const routes: Routes = [
   { path: 'login',
     component: LoginComponent },
@@ -19,6 +21,9 @@ const routes: Routes = [
     component: PatientComponent, canActivate: [AuthGuard] },
   { path: 'patients/:id',
     component: PatientDetailComponent, canActivate: [AuthGuard] },
+
+  { path: 'medical-records/:id',
+    component: MedicalRecordDetailComponent, canActivate: [AuthGuard] },
 
   { path: '', redirectTo: '/patients', pathMatch: 'full' },
 ];

@@ -5,3 +5,4 @@ export * from './handleError';
 export * from './patients.service';
 export * from './state.service';
 export * from './categorization.service';
+export * from './medical-record.service';

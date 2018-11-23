@@ -12,6 +12,9 @@ import { AuthGuard } from './_services/index';
 import { AuthInterceptor } from './_services/index';
 
 import { PatientService } from './_services/index';
+import { StateService } from './_services/index';
+import { CategorizationService } from './_services/index';
+import { MedicalRecordService } from './_services/index';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/index';
@@ -20,14 +23,16 @@ import { LogoutComponent } from './login/index';
 import { PatientComponent } from './patient/index';
 import { PatientDetailComponent } from './patient/index';
 
+import { MedicalRecordDetailComponent } from './medical-record/index';
+
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -49,7 +54,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     LogoutComponent,
 
     PatientComponent,
-    PatientDetailComponent
+    PatientDetailComponent,
+    MedicalRecordDetailComponent
   ],
   imports: [
     BrowserModule,
@@ -89,7 +95,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
       multi: true,
     },
 
-    PatientService
+    PatientService,
+    StateService,
+    CategorizationService,
+    MedicalRecordService
   ],
   bootstrap: [AppComponent]
 })
