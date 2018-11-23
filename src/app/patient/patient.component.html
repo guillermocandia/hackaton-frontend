@@ -3,7 +3,9 @@
     <h2>Pacientes</h2>
   </div>
 </section>
-
+<button mat-raised-button color="primary" title="Nuevo" routerLink="/patients/new">
+Nuevo
+</button>
     <table mat-table #table [dataSource]="dataSource">
 
       <ng-container matColumnDef="id">

@@ -1,4 +1,4 @@
-export class categorization {
+export class Categorization {
   id: number;
   name: string;
   priority: number;
